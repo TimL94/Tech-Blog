@@ -1,11 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-</head>
-<body>
-    
-</body>
-</html>
+<div class="row mt-2 mb-3">
+    <div class="col-12 text-center mt-3">
+        <button type="button" class="btn btn-secondary">Add Post +</button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-2"></div>
+    <div class="col-8">
+        {{#each posts as |post|}}
+        {{> post-details}}
+        {{/each}}
+    </div>
+    <div class="col-2"></div>
+</div>
+

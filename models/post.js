@@ -1,5 +1,5 @@
 const { Model, DataTypes } = require('sequelize');
-const bycrpt = require('bcrypt');
+const User  = require('./user');
 const sequelize = require('../config/connection');
 
 class Post extends Model {}
@@ -12,9 +12,12 @@ Post.init(
             primaryKey: true,
             autoIncrement: true
         },
-        post_name: {
+        post_title: {
             type: DataTypes.STRING,
-            allowNull: false
+            allowNull: false,
+            validate: {
+                len: [3, 30]
+            }
         },
         content: {
             type: DataTypes.TEXT,
@@ -26,11 +29,10 @@ Post.init(
         user_id: {
             type: DataTypes.INTEGER,
             references: {
-                model: 'User',
+                model: 'user',
                 key: 'id'
-
             }
-        }
+        },
     },
     {
         sequelize,
