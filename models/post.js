@@ -22,7 +22,7 @@ Post.init(
             type: DataTypes.TEXT,
             allowNull: false,
             validate: {
-                len: [3, 150]
+                len: [3, 500]
             }
         },
         user_id: {
