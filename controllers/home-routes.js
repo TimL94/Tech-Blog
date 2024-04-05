@@ -58,6 +58,16 @@ router.get('/login', (req, res) => {
     res.render('login');
 })
 
+router.get('/signup', (req, res) => {
+    if (req.session.loggedIn) {
+        console.log('logged in');
+        res.redirect('/');
+        return;
+    }
+
+    res.render('signup');
+})
+
 router.get('/posts/:id', auth, async (req, res) => {
     try{
         const dbCommentData = await Comment.findAll({
