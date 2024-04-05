@@ -15,7 +15,7 @@ Post.init(
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
-                len: [3, 30]
+                len: [3, 100]
             }
         },
         content: {
@@ -37,7 +37,8 @@ Post.init(
         sequelize,
         timestamps: true,
         underscored: true,
-        modelName: 'post'
+        modelName: 'post',
+        freezeTableName: true
     }
 )
 

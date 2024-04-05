@@ -1,0 +1,24 @@
+<div class="row">
+    <div class="card m-3 border-dark">
+
+        <div class="card-header bg-info">
+            <h5 class="text-center">{{post.post_title}}</h5>
+        </div>
+
+        <div class="card-body m-2">
+            <div class="card-text text-center">{{post.content}}</div>
+        </div>
+
+        <div class="card-footer d-flex justify-content-between">
+            <a href="/posts/{{id}}"><button type="button" class="btn btn-secondary">Add Comment</button></a>
+            author: {{post.user.username}}
+        </div>
+    </div>
+</div>
+<div class="row d-flex justify-content-center">
+    <div class="col-6">
+        {{#each comments as |comment|}}
+        {{> post-details}}
+        {{/each}}
+    </div>
+</div>

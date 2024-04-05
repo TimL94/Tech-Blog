@@ -21,12 +21,16 @@
           <a class="nav-link" href="/">Home</a>
         </li>
         {{#if loggedIn}}
+        {{#if showDashboard}}
         <li class="nav-item">
           <a class="nav-link" href="/dashboard/{{userId}}">Dashboard</a>
         </li>
+        {{/if}}
+        {{#if showDashboard}}
         <li class="nav-item">
           <button type="button" class="btn btn-dark" id="logout">Logout</button>
         </li>
+        {{/if}}
         {{else}}
         <li class="nav-item">
           <a class="nav-link" href="/login">Login</a>

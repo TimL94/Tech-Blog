@@ -1,0 +1,16 @@
+<div class="card m-3 border-dark">
+
+    <div class="card-header bg-info">
+        <h5 class="text-center">{{post_title}}</h5>
+    </div>
+
+    <div class="card-body m-2">
+        <div class="card-text text-center">{{content}}</div>
+    </div>
+
+    <div class="card-footer d-flex justify-content-between">
+        <a href="/posts/{{id}}"><button type="button" class="btn btn-secondary">View Comments</button></a>
+        author: {{user.username}}
+    </div>
+
+</div>
