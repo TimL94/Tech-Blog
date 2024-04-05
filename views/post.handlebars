@@ -10,7 +10,7 @@
         </div>
 
         <div class="card-footer d-flex justify-content-between">
-            <a href="/posts/{{id}}"><button type="button" class="btn btn-secondary">Add Comment</button></a>
+            <a href="/newcomment/{{post.id}}"><button type="button" class="btn btn-secondary" id="add-comment">Add Comment</button></a>
             author: {{post.user.username}}
         </div>
     </div>
@@ -22,3 +22,4 @@
         {{/each}}
     </div>
 </div>
+

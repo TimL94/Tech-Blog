@@ -15,4 +15,13 @@ router.post('/', async (req, res) => {
     }
 })
 
+router.post('/comment/:id', async (req, res) => {
+    try{
+        
+    } catch (error){
+        console.error(error);
+        res.status(500).json(error);
+    }
+})
+
 module.exports = router;

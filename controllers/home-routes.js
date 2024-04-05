@@ -86,6 +86,7 @@ router.get('/posts/:id', auth, async (req, res) => {
         res.render('post', {
             loggedIn: req.session.loggedIn,
             showDashboard: false,
+            postId: post.id,
             post,
             comments
 
@@ -103,6 +104,14 @@ router.get('/newpost', auth, (req, res) => {
         userId: req.session.userId,
         loggedIn: req.session.loggedIn,
         showDashboard: false
+    })
+})
+
+router.get('/newcomment/:id', auth, async (req, res) => {
+    res.render('newcomment', {
+        loggedIn: req.session.logged,
+        showDashboard: false,
+        postId: req.params.id,
     })
 })
 
