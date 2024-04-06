@@ -81,6 +81,7 @@ router.get('/posts/:id', auth, async (req, res) => {
                 }
             ]
         })
+        req.session.postId = req.params.id;
 
         const comments = dbCommentData.map((comment) => comment.get({ plain: true }));
 
@@ -96,7 +97,7 @@ router.get('/posts/:id', auth, async (req, res) => {
         res.render('post', {
             loggedIn: req.session.loggedIn,
             showDashboard: false,
-            postId: post.id,
+            postId: req.session.postId,
             post,
             comments
 
@@ -117,12 +118,24 @@ router.get('/newpost', auth, (req, res) => {
     })
 })
 
-router.get('/newcomment/:id', auth, async (req, res) => {
+router.get('/newcomment', auth, async (req, res) => {
+
+    const dbPostData = await Post.findByPk(req.session.postId, {
+        include: [
+            {
+                model: User,
+                attributes: ['username']
+            }
+        ]
+    });
+    const post = dbPostData.get({ plain: true });
+
     res.render('newcomment', {
-        loggedIn: req.session.logged,
+        loggedIn: req.session.loggedIn,
         showDashboard: false,
-        postId: req.params.id,
-    })
+        postId: req.session.postId,
+        post
+    });
 })
 
 module.exports = router;

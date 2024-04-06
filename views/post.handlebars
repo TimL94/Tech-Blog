@@ -9,13 +9,13 @@
     </div>
 
     <div class="card-footer d-flex justify-content-between">
-        <a href="/newpost/{{id}}"><button type="button" class="btn btn-secondary">Add Comment</button></a>
+        <a href="/newcomment"><button type="button" class="btn btn-secondary">Add Comment</button></a>
         author: {{post.user.username}}
     </div>
 
 </div>
 <div class="row d-flex justify-content-center">
-    <div class="col-6">
+    <div class="col-lg-6 col-mb-12">
         {{#each comments as |comment|}}
         {{> post-details}}
         {{/each}}
