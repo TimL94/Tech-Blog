@@ -1,5 +1,7 @@
 const commentHandler = document.getElementById('new-comment');
 
+
+// retrieves the comment content and creates a fetch-post request to create a new comment in the database
 const createComment = async (event) => {
     event.preventDefault();
 

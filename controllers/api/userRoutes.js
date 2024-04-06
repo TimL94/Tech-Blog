@@ -1,8 +1,8 @@
 const router = require('express').Router();
 const { User } = require('../../models');
 
-// Define user routes here
 
+//creates a new user if criteria is good, otherwise sends a 500 internal error
 router.post('/', async (req,res) => {
       
     try {
@@ -11,6 +11,7 @@ router.post('/', async (req,res) => {
             email: req.body.email,
             password: req.body.password
         });
+        //saves loggedIn and userId under session variables that can be called elsewhere in the program
         req.session.save(() =>{
             req.session.loggedIn = true;
             req.session.userId = dbUserData.id;
@@ -24,6 +25,7 @@ router.post('/', async (req,res) => {
     
 })
 
+// loggs user in if criteria is good and sets session variables the same as the create user. if criteria is bad 500 internal error is crated
 router.post('/login', async (req,res) => {
     try {
         const dbUserData = await User.findOne({
@@ -31,6 +33,7 @@ router.post('/login', async (req,res) => {
                 email: req.body.email,
             }
         });
+
         if(!dbUserData) {
             res.status(400).json({error: 'inccorect email or password'});
             return;
@@ -55,6 +58,8 @@ router.post('/login', async (req,res) => {
     console.log(req.body.password)
 })
 
+
+// loggs user out and destroys ths loggedIn session variable
 router.post('/logout', (req, res) => {
     console.log('\nim here\n')
     if (req.session.loggedIn) {

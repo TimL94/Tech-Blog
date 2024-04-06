@@ -1,5 +1,5 @@
 const { User } = require('../models');
-
+//dummy user data
 const userData = [
     {
         username: "codeguy183",

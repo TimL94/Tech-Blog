@@ -1,4 +1,6 @@
 const { Post } = require('../models');
+
+//dummy post data
 const postData = [
     {
         post_title: "Love to be doing it",

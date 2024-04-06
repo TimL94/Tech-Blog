@@ -5,6 +5,7 @@ const exphbs = require('express-handlebars');
 const routes = require('./controllers');
 const helpers = require('./utils/helpers');
 
+// the following sets up the server connection, initializes middleware, sessions, and cookies, and starts the server.
 const sequelize = require('./config/connection');
 
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
@@ -24,7 +25,6 @@ const sess = {
     })
   };
 
-  
   app.use(session(sess));
 
   app.engine('handlebars', hbs.engine);

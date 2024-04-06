@@ -2,12 +2,16 @@ const { Model, DataTypes } = require('sequelize');
 const bycrpt = require('bcrypt');
 const sequelize = require('../config/connection');
 
+
+//uses bycrpt on the password
 class User extends Model {
     checkPassword(loginPw) {
         return bycrpt.compareSync(loginPw, this.password);
     }
 }
 
+
+//creates the user model
 User.init(
     {
         id: {

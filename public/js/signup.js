@@ -1,6 +1,8 @@
 const signupHandler = async (event) => {
     event.preventDefault();
 
+
+    // retrieves username email and password from a form and passes them into a fetch-post to create a new user if the criteria is good
     const username = document.getElementById('signup-username').value;
     const email = document.getElementById('signup-email').value;
     const password = document.getElementById('signup-password').value;

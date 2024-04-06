@@ -1,5 +1,7 @@
 const newPostButton = document.getElementById('new-post');
 
+
+// retrieves the post title and  content and creates a fetch-post request to create a new post in the database
 const newPostHandler = async (event) => {
     event.preventDefault();
     const title = document.getElementById('new-post-title').value.trim();

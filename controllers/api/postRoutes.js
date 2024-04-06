@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const { Post, Comment } = require('../../models');
 
+// creates a new post if the criteria is god, otherwise sends a 500 internal error
 router.post('/', async (req, res) => {
     try {
         const dbPostData = await Post.create({
@@ -15,6 +16,7 @@ router.post('/', async (req, res) => {
     }
 })
 
+// creates a new comment if the criteria is good, otherwise sends a 500 internal error
 router.post('/newcomment', async (req, res) => {
     try{
          const dbCommentData = await Comment.create({
