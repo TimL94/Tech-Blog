@@ -15,8 +15,7 @@ const createComment = async (event) => {
             body: JSON.stringify({content}),
             headers: { 'Content-Type': 'application/json' }
         });
-        const responseData = await response.json();
-        console.log(responseData)
+
         if (response.ok) {
             document.location.replace(`/`);
         } else {

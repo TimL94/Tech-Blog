@@ -31,4 +31,22 @@ router.post('/newcomment', async (req, res) => {
     }
 })
 
+router.put('/updatepost', async (req, res) => {
+    try{
+        console.log(req.body);
+
+        const updatePost = await Post.update(req.body, {
+            where: {
+                id: req.session.postId
+            },
+            individualHooks: true
+        });
+        res.status(200).json(updatePost);
+    } catch (error) {
+        res.status(500).json(error)
+    }
+
+
+})
+
 module.exports = router;

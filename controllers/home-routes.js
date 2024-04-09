@@ -150,4 +150,33 @@ router.get('/newcomment', auth, async (req, res) => {
     });
 })
 
+router.get('/editpost/:id', async (req, res) => {
+    try{
+
+        req.session.postId = req.params.id;
+
+        const dbPostData = await Post.findByPk(req.session.postId, {
+            include:[
+                {
+                    model: User,
+                    attributes: ['username']
+                }
+            ]});
+        const post = dbPostData.get({ plain: true });
+
+
+        // renders the post template and passes in variables, postId is created as a session variable here which will be used to create new comments related to this post
+        res.render('editpost', {
+            loggedIn: req.session.loggedIn,
+            showDashboard: false,
+            postId: req.session.postId,
+            post
+        })
+
+    } catch (error) {
+        console.error(error);
+        res.status(500).json(error);
+    }
+});
+
 module.exports = router;
