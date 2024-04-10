@@ -4,7 +4,7 @@ const { User, Post, Comment } = require('../models');
 const auth = require('../utils/auth');
 
 // displays the homepage
-router.get('/', auth, async (req, res) => {
+router.get('/', async (req, res) => {
     try{
         //finds all posts from the database and includes the associated usernames from the user model
         const dbPostData = await Post.findAll({
@@ -31,15 +31,20 @@ router.get('/', auth, async (req, res) => {
 })
 
 // brings logged in user to their personal dashboard where all of their individual posts are displayed and they can create new posts
-router.get('/dashboard/:id', auth, async (req,res) => {
+router.get('/dashboard', auth, async (req,res) => {
     try{
-        const dbUserData = await Post.findAll({
-            where: { user_id: req.params.id }
+        const dbPostData = await Post.findAll({
+            where: { user_id: req.session.userId },
         })
 
-        const posts = dbUserData.map((post) => post.get({ plain: true }));
+        const dbUserData = await User.findByPk(req.session.userId);
+
+
+        const user = dbUserData.get({ plain: true});
+        const posts = dbPostData.map((post) => post.get({ plain: true }));
         
         res.render('dashboard', {
+            user,
             posts,
             loggedIn: req.session.loggedIn,
             showDashboard: false
@@ -77,7 +82,7 @@ router.get('/signup', (req, res) => {
 
 
 // displays a specific posts and all associated comments
-router.get('/posts/:id', auth, async (req, res) => {
+router.get('/posts/:id', async (req, res) => {
     try{
         const dbCommentData = await Comment.findAll({
             where: {
@@ -150,7 +155,7 @@ router.get('/newcomment', auth, async (req, res) => {
     });
 })
 
-router.get('/editpost/:id', async (req, res) => {
+router.get('/editpost/:id', auth, async (req, res) => {
     try{
 
         req.session.postId = req.params.id;

@@ -10,7 +10,7 @@
 
     <div class="card-footer d-flex justify-content-between">
         <a href="/newcomment"><button type="button" class="btn btn-secondary">Add Comment</button></a>
-        author: {{post.user.username}}
+        created by {{post.user.username}} on {{format_date post.createdAt}} 
     </div>
 
 </div>
