@@ -1,5 +1,7 @@
 const deletePostHandlers = document.querySelectorAll('.delete-form');
 
+
+// creates a event listener for each post that is generated and if the user clicks the delete button the user is prompted to confirm and the post is deleted
 const deletePost = async (event) => {
     event.preventDefault();
 

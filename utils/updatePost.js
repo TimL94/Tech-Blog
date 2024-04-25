@@ -1,5 +1,6 @@
 const updatePostHandler = document.getElementById('update-post');
 
+// creates the event listener for updating a post and makes the fetch call to routes
 const updatePost = async (event) => {
     event.preventDefault();
 

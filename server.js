@@ -15,9 +15,12 @@ const PORT =  process.env.PORT || 3001;
 
 const hbs = exphbs.create({ helpers });
 
+// intitializes the session and adds the maxAge cookie that will end the session after half an hour. this will log the user out if no input is made fo half an hour
 const sess = {
     secret: 'Super secret secret',
-    cookie: {},
+    cookie: {
+      maxAge: 30 * 60 *  1000
+    },
     resave: false,
     saveUninitialized: true,
     store: new SequelizeStore({

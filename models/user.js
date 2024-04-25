@@ -41,7 +41,7 @@ User.init(
         }
     },
     {
-        
+        //uses bycrypt to encrypt user passwords
         hooks: {
             async beforeCreate(newUserData) {
                 newUserData.password = await bycrpt.hash(newUserData.password, 10);

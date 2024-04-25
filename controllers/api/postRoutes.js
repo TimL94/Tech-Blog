@@ -32,6 +32,8 @@ router.post('/newcomment', async (req, res) => {
     }
 })
 
+
+// Updates a post using the session variable postId to identify the specific post
 router.put('/updatepost', async (req, res) => {
     try{
         console.log(req.body);
@@ -46,10 +48,10 @@ router.put('/updatepost', async (req, res) => {
     } catch (error) {
         res.status(500).json(error)
     }
-
-
 })
 
+
+//deletes a sepecific post based on the id passsed in through the url parameters
 router.delete('/deletepost/:id', async (req, res) => {
     try{
         const dbPostData = await Post.destroy({
